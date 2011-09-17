@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<action-recipes>
+	
+	<!-- HTML actions -->
+
+	<action id="com.onecrayon.sugar.handy.html-header" category="handy.root/handy.html/0">
+		<script>placeholder</script>
+		<language-context>html, xml</language-context>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.switch-tag" category="handy.root/handy.html/1">
+		<script>switch-tag.js</script>
+		<language-context>html, xml</language-context>
+		<key-equivalent>control t</key-equivalent>
+	</action>
+	
+	<!-- Number handling actions -->
+
+	<action id="com.onecrayon.sugar.handy.numbers-header" category="handy.root/handy.numeric/0">
+		<script>placeholder</script>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.increment-1" category="handy.root/handy.numeric/1">
+		<script>bump-numeric.js</script>
+		<key-equivalent>command option arrow-up</key-equivalent>
+		<setup>
+			<amount>1</amount>
+		</setup>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.decrement-1" category="handy.root/handy.numeric/2">
+		<script>bump-numeric.js</script>
+		<key-equivalent>command option arrow-down</key-equivalent>
+		<setup>
+			<amount>-1</amount>
+		</setup>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.increment-10" category="handy.root/handy.numeric/3">
+		<script>bump-numeric.js</script>
+		<key-equivalent>command option shift arrow-up</key-equivalent>
+		<setup>
+			<amount>10</amount>
+		</setup>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.decrement-10" category="handy.root/handy.numeric/4">
+		<script>bump-numeric.js</script>
+		<key-equivalent>command option shift arrow-down</key-equivalent>
+		<setup>
+			<amount>-10</amount>
+		</setup>
+	</action>
+	
+	<!-- Hidden actions -->
+	
+	<action id="com.onecrayon.sugar.handy.no-dupes.css-semicolon" category="hidden">
+		<script>no-dupes.js</script>
+		<text-trigger key-equivalent=";"></text-trigger>
+		<syntax-context>css punctuation.terminator</syntax-context>
+		<setup>
+			<character>;</character>
+		</setup>
+	</action>
+	
+</action-recipes>

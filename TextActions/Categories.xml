@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<action-categories>
+	<!-- Handy categories -->
+	<category id="handy.root" show="sub"></category>
+	<category id="handy.numeric" show="inline separated"></category>
+	<category id="handy.html" show="inline separated"></category>
+</action-categories>
