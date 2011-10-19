@@ -79,5 +79,28 @@
 			<amount>-10</amount>
 		</setup>
 	</action>
+	
+	<!-- Multiple selection actions -->
+	
+	<action id="com.onecrayon.sugar.handy.selections.prepend" category="handy.root/handy.selections/1">
+		<script>modify-selections.js</script>
+		<key-equivalent>control [</key-equivalent>
+		<setup>
+			<method>prepend</method>
+		</setup>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.selections.edit" category="handy.root/handy.selections/2">
+		<script>modify-selections.js</script>
+		<key-equivalent>control \</key-equivalent>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.selections.append" category="handy.root/handy.selections/3">
+		<script>modify-selections.js</script>
+		<key-equivalent>control ]</key-equivalent>
+		<setup>
+			<method>append</method>
+		</setup>
+	</action>
 		
 </action-recipes>

@@ -5,6 +5,8 @@
  * if it doesn't overlap the open or close tag
  */
 
+var escSnippetChars = loadLibrary('handy-lib').escSnippetChars;
+
 action.canPerformWithContext = function(context, outError) {
 	// Only support single selections
 	return context.selectedRanges.length === 1;
@@ -46,10 +48,4 @@ action.performWithContext = function(context, outError) {
 	// Apply the changes!
 	context.selectedRanges = [item.range];
 	return context.insertTextSnippet(new CETextSnippet(snippet));
-};
-
-// Utility functions
-
-var escSnippetChars = function(text) {
-	return text.replace(/([${}`])/g, '\\$1');
 };

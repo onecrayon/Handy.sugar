@@ -12,3 +12,7 @@
 "com.onecrayon.sugar.handy.increment-10.title" = "Increment +10";
 "com.onecrayon.sugar.handy.decrement-1.title" = "Decrement -1";
 "com.onecrayon.sugar.handy.decrement-10.title" = "Decrement -10";
+
+"com.onecrayon.sugar.handy.selections.prepend.title" = "Prepend To Selections";
+"com.onecrayon.sugar.handy.selections.edit.title" = "Edit Selections";
+"com.onecrayon.sugar.handy.selections.append.title" = "Append To Selections";
