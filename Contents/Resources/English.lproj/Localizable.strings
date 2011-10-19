@@ -4,6 +4,9 @@
 "com.onecrayon.sugar.handy.switch-tag.title" = "Quick Switch Tag";
 "com.onecrayon.sugar.handy.close-tag-snafu.title" = "Prevent Duplicate Close Tag";
 
+"com.onecrayon.sugar.handy.css-header.title" = "CSS:";
+"com.onecrayon.sugar.handy.duplicate-selector.title" = "Duplicate CSS Rule";
+
 "com.onecrayon.sugar.handy.numbers-header.title" = "Numbers:";
 "com.onecrayon.sugar.handy.increment-1.title" = "Increment +1";
 "com.onecrayon.sugar.handy.increment-10.title" = "Increment +10";
