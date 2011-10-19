@@ -14,6 +14,12 @@
 		<key-equivalent>control t</key-equivalent>
 	</action>
 	
+	<action id="com.onecrayon.sugar.handy.close-tag-snafu" category="hidden">
+		<script>close-tag-snafu.js</script>
+		<syntax-context>language-root.html, html tag > punctuation.definition.begin, language-root.xml, xml tag > punctuation.definition.begin</syntax-context>
+		<text-trigger key-equivalent=">"></text-trigger>
+	</action>
+	
 	<!-- Number handling actions -->
 
 	<action id="com.onecrayon.sugar.handy.numbers-header" category="handy.root/handy.numeric/0">

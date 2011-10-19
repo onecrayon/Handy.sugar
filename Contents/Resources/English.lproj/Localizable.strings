@@ -2,6 +2,7 @@
 
 "com.onecrayon.sugar.handy.html-header.title" = "HTML / XML:";
 "com.onecrayon.sugar.handy.switch-tag.title" = "Quick Switch Tag";
+"com.onecrayon.sugar.handy.close-tag-snafu.title" = "Prevent Duplicate Close Tag";
 
 "com.onecrayon.sugar.handy.numbers-header.title" = "Numbers:";
 "com.onecrayon.sugar.handy.increment-1.title" = "Increment +1";
