@@ -8,9 +8,11 @@ A handy collection of text actions for Espresso. Currently includes:
 * Prepend To Selections, Edit Selections, and Append To Selections: modify multiple selections in a single document at once. To create multiple selections either hold down option and drag to create multiple selections in a column, or hold down command and drag to create multiple discontiguous selections anywhere
 * (hidden): typing a semicolon at the end of a CSS property will not result in duplicate semicolons anymore if there is already one there (will instead move your cursor outside the property)
 * (hidden): creating a linebreak inside of a documentation comment in PHP or JavaScript will automatically add a leading asterisk to the next line. Documentation comments are formatted like so:
+
         /**
          * My documentation comment
          */
+
 * (hidden): if you accidentally type a full closing tag in HTML or XML, the extra characters will be automatically removed. For instance, if you type `</div>` in an HTML document, you will end up with `</div>/div>` because of the automatic tag closing in Espresso. With Handy.sugar installed, the extra "/div>" will be automatically removed as soon as you type the `>` character
 
 ## Installation
