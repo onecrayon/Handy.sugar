@@ -16,3 +16,5 @@
 "com.onecrayon.sugar.handy.selections.prepend.title" = "Prepend To Selections";
 "com.onecrayon.sugar.handy.selections.edit.title" = "Edit Selections";
 "com.onecrayon.sugar.handy.selections.append.title" = "Append To Selections";
+
+"com.onecrayon.sugar.handy.documentation-comments-newline.title" = "Documentation Comment Newline";

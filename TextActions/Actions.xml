@@ -102,5 +102,14 @@
 			<method>append</method>
 		</setup>
 	</action>
+	
+	<!-- Hidden actions -->
+	
+	<snippet id="com.onecrayon.sugar.handy.documentation-comments-newline" category="hidden">
+		<text>
+* </text>
+ 		<text-trigger key-equivalent="enter"></text-trigger>
+		<syntax-context>js comment.block.documentation, php comment.block.documentation</syntax-context>
+	</snippet>
 		
 </action-recipes>
