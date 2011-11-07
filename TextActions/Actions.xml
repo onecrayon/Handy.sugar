@@ -105,11 +105,19 @@
 	
 	<!-- Hidden actions -->
 	
+	<snippet id="com.onecrayon.sugar.handy.documentation-comment-start" category="hidden">
+		<text>/**
+ * $0
+ */</text>
+		<text-trigger key-equivalent="*">/*</text-trigger>
+		<syntax-context>js comment.block, php comment.block</syntax-context>
+	</snippet>
+	
 	<snippet id="com.onecrayon.sugar.handy.documentation-comments-newline" category="hidden">
 		<text>
 * </text>
  		<text-trigger key-equivalent="enter"></text-trigger>
-		<syntax-context>js comment.block.documentation, php comment.block.documentation</syntax-context>
+		<syntax-context>js comment.block.documentation:not(line-by-line), php comment.block.documentation:not(line-by-line)</syntax-context>
 	</snippet>
 		
 </action-recipes>
