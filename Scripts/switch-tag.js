@@ -23,8 +23,8 @@ action.performWithContext = function(context, outError) {
 	// Save our base text
 	var text = context.substringWithRange(item.range);
 	// Pull out our opening and closing tags
-	var openTag = text.replace(/^(<[\w:-]+).*?$/, '$1');
-	var closeTag = text.replace(/^.*?(<\/[\w:-]+>)$/, '$1');
+	var openTag = text.replace(/^(<[\w:-]+)[\s\S]*?$/, '$1');
+	var closeTag = text.replace(/^[\s\S]*?(<\/[\w:-]+>)$/, '$1');
 	var snippet;
 	// If old selection occurs outside start and end tags, we can add it to snippet
 	var newRangeStart = range.location - item.range.location;
