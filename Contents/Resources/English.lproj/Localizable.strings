@@ -18,3 +18,7 @@
 "com.onecrayon.sugar.handy.selections.append.title" = "Append To Selections";
 
 "com.onecrayon.sugar.handy.documentation-comments-newline.title" = "Documentation Comment Newline";
+
+"com.onecrayon.handy.auto-indent-close-brace.square.title" = "Typing";
+"com.onecrayon.handy.auto-indent-close-brace.curly.title" = "Typing";
+"com.onecrayon.handy.auto-indent-close-brace.round.title" = "Typing";

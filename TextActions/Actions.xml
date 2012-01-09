@@ -119,5 +119,29 @@
  		<text-trigger key-equivalent="enter"></text-trigger>
 		<syntax-context>js comment.block.documentation:not(line-by-line), php comment.block.documentation:not(line-by-line)</syntax-context>
 	</snippet>
+	
+	<action id="com.onecrayon.handy.auto-indent-close-brace.square" category="hidden">
+		<script>indent-close-braces.js</script>
+		<text-trigger key-equivalent="]"></text-trigger>
+		<setup>
+			<character>]</character>
+		</setup>
+	</action>
+
+	<action id="com.onecrayon.handy.auto-indent-close-brace.curly" category="hidden">
+		<script>indent-close-braces.js</script>
+		<text-trigger key-equivalent="}"></text-trigger>
+		<setup>
+			<character>}</character>
+		</setup>
+	</action>
+
+	<action id="com.onecrayon.handy.auto-indent-close-brace.round" category="hidden">
+		<script>indent-close-braces.js</script>
+		<text-trigger key-equivalent=")"></text-trigger>
+		<setup>
+			<character>)</character>
+		</setup>
+	</action>
 		
 </action-recipes>
