@@ -47,5 +47,5 @@ action.performWithContext = function(context, outError) {
 	
 	// Apply the changes!
 	context.selectedRanges = [item.range];
-	return context.insertTextSnippet(new CETextSnippet(snippet));
+	return context.insertTextSnippet(new CETextSnippet(snippet), CETextOptionVerbatim);
 };
