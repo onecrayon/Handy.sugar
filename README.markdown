@@ -6,6 +6,8 @@ A handy collection of text actions for Espresso. Currently includes:
 * **Quick Switch Tag**: quickly rename the nearest wrapping HTML or XML tag, and then hit tab to jump straight back to what you were editing
 * **Duplicate CSS Rule**: when your cursor is inside of an existing CSS rule, use `command D` to duplicate it (much like you could in CSSEdit, but smarter)
 * **Prepend To Selections**, **Edit Selections**, and **Append To Selections**: modify multiple selections in a single document at once. To create multiple selections either hold down option and drag to create multiple selections in a column, or hold down command and drag to create multiple discontiguous selections anywhere
+* **Combine Selected Ranges**: select everything from the first selection to the last selection in the document
+* **Select Text Between Selected Ranges**: select everything between the first and last selection in the document
 * _Prevent duplicate semicolons_ (hidden): typing a semicolon at the end of a CSS property will not result in duplicate semicolons anymore if there is already one there (will instead move your cursor outside the property)
 * _Documentation comments_ (hidden): creating a linebreak inside of a documentation comment in PHP or JavaScript will automatically add a leading asterisk to the next line. Documentation comments are formatted like so:
 
@@ -39,6 +41,10 @@ Handy.sugar is written entirely in XML and JavaScript using Espresso's [JavaScri
 You can also [let me know](http://onecrayon.com/about/contact/) if you have any feedback, requests, or run across any problems.
 
 ## Changelog
+
+**1.3**:
+
+* New actions for combining multiple selected ranges into a single selected range, or for selecting the text in between the first and last selected ranges
 
 **1.2**:
 
