@@ -108,5 +108,5 @@ action.performWithContext = function(context, outError) {
 	return context.applyTextRecipe(recipe);
 };
 
-var whitespaceRegex = /^\s*$/;
-var startRegex = /^(\s*?)\S[\s\S]*$/;
+var whitespaceRegex = /^[ \t]*$/;
+var startRegex = /^([ \t]*?)\S[\s\S]*$/;
