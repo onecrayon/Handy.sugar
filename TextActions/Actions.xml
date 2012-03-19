@@ -103,6 +103,21 @@
 		</setup>
 	</action>
 	
+	<!-- Selection manipulation -->
+	
+	<action id="com.onecrayon.sugar.handy.selections.combine" category="handy.root/handy.selection-manipulation/1">
+		<script>merge-selections.js</script>
+		<key-equivalent>control =</key-equivalent>
+	</action>
+
+	<action id="com.onecrayon.sugar.handy.selections.combine-bookended" category="handy.root/handy.selection-manipulation/2">
+		<script>merge-selections.js</script>
+		<key-equivalent>control -</key-equivalent>
+		<setup>
+			<bookends>true</bookends>
+		</setup>
+	</action>
+	
 	<!-- Hidden actions -->
 	
 	<snippet id="com.onecrayon.sugar.handy.documentation-comment-start" category="hidden">

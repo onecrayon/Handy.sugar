@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<action-sort-instructions>
+	<sort-template>
+		<selector>*</selector>
+		<selector>handy.css</selector>
+		<selector>handy.html</selector>
+		<selector>handy.numeric</selector>
+		<selector>handy.selections</selector>
+		<selector>handy.selection-manipulation</selector>
+	</sort-template>
+</action-sort-instructions>

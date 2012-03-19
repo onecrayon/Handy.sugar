@@ -17,6 +17,9 @@
 "com.onecrayon.sugar.handy.selections.edit.title" = "Edit Selections";
 "com.onecrayon.sugar.handy.selections.append.title" = "Append To Selections";
 
+"com.onecrayon.sugar.handy.selections.combine.title" = "Combine Selected Ranges";
+"com.onecrayon.sugar.handy.selections.combine-bookended.title" = "Select Text Between Selected Ranges";
+
 "com.onecrayon.sugar.handy.documentation-comments-newline.title" = "Documentation Comment Newline";
 
 "com.onecrayon.handy.auto-indent-close-brace.square.title" = "Typing";
