@@ -18,6 +18,7 @@ A handy collection of text actions for Espresso. Currently includes:
   Additionally, typing `/**` will automatically insert a documentation comment snippet.
 
 * _Auto-indent closing braces_ (hidden): typing a closing brace alone on a line will automatically adjust its indentation level to the same as its matching opening brace; this applies to `)`, `]`, and `}`
+* _Grid-based tabs_ (hidden): if your preferences are set to use spaces instead of tabs, hitting the tab key without a selection will insert the number of spaces to bring your cursor to the next tab grid line. So for instance, if you are using four spaces per tab and there are 6 characters before your cursor in the line, hitting `tab` will insert two spaces (to bring your cursor to the 8 character point). Any tab characters in the line's indentation will be automatically converted to spaces when you hit `tab` to make sure that the grid calculations are accurate.
 * (hidden): if you accidentally type a full closing tag in HTML or XML, the extra characters will be automatically removed. For instance, if you type `</div>` in an HTML document, you will end up with `</div>/div>` because of the automatic tag closing in Espresso. With Handy.sugar installed, the extra "/div>" will be automatically removed as soon as you type the `>` character
 
 ## Installation
@@ -42,13 +43,17 @@ You can also [let me know](http://onecrayon.com/about/contact/) if you have any 
 
 ## Changelog
 
+**1.4**:
+
+* New hidden action: grid-based tab insertion when using spaces instead of tabs
+
 **1.3**:
 
 * New actions for combining multiple selected ranges into a single selected range, or for selecting the text in between the first and last selected ranges
 
 **1.2**:
 
-* New hidden actions: typing a closing brace will automatically indent it based on the indentation of the opening brace (if the closing brace is alone on a line)
+* New hidden action: typing a closing brace will automatically indent it based on the indentation of the opening brace (if the closing brace is alone on a line)
 
 **1.1**:
 
