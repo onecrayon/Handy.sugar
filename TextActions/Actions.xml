@@ -158,5 +158,10 @@
 			<character>)</character>
 		</setup>
 	</action>
+	
+	<action id="com.onecrayon.handy.grid-based-tabs" category="hidden">
+		<script>grid-based-tabs.js</script>
+		<text-trigger key-equivalent="tab"></text-trigger>
+	</action>
 		
 </action-recipes>
