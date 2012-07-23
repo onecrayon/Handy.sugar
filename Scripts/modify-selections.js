@@ -34,9 +34,9 @@ action.performWithContext = function(context, outError) {
 		lastRange = context.selectedRanges[i];
 		snippet += escSnippetChars(context.substringWithRange(new Range(interimIndex, lastRange.location - interimIndex)));
 		if (method === 'prepend') {
-			snippet += '$1' + context.substringWithRange(lastRange);
+			snippet += '$1' + escSnippetChars(context.substringWithRange(lastRange));
 		} else if (method === 'append') {
-			snippet += context.substringWithRange(lastRange) + '$1';
+			snippet += escSnippetChars(context.substringWithRange(lastRange)) + '$1';
 		} else {
 			snippet += '$1';
 		}
