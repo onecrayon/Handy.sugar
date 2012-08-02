@@ -6,6 +6,7 @@
 		<selector>handy.html</selector>
 		<selector>handy.numeric</selector>
 		<selector>handy.selections</selector>
+		<selector>handy.selected-lines</selector>
 		<selector>handy.selection-manipulation</selector>
 	</sort-template>
 </action-sort-instructions>

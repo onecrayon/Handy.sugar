@@ -105,7 +105,7 @@
 	
 	<!-- Selected line(s) modification actions -->
 	
-	<action id="com.onecrayon.sugar.handy.selected-lines.prepend" category="handy.root/handy.selections/4">
+	<action id="com.onecrayon.sugar.handy.selected-lines.prepend" category="handy.root/handy.selected-lines/1">
 		<script>modify-lines.js</script>
 		<key-equivalent>control {</key-equivalent>
 		<setup>
@@ -113,7 +113,7 @@
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selected-lines.wrap" category="handy.root/handy.selections/5">
+	<action id="com.onecrayon.sugar.handy.selected-lines.wrap" category="handy.root/handy.selected-lines/2">
 		<script>modify-lines.js</script>
 		<key-equivalent>control |</key-equivalent>
 		<setup>
@@ -121,7 +121,7 @@
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selected-lines.append" category="handy.root/handy.selections/6">
+	<action id="com.onecrayon.sugar.handy.selected-lines.append" category="handy.root/handy.selected-lines/3">
 		<script>modify-lines.js</script>
 		<key-equivalent>control }</key-equivalent>
 		<setup>

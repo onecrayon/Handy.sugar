@@ -6,5 +6,6 @@
 	<category id="handy.html" show="inline separated"></category>
 	<category id="handy.css" show="inline separated"></category>
 	<category id="handy.selections" show="inline separated"></category>
+	<category id="handy.selected-lines" show="inline separated"></category>
 	<category id="handy.selection-manipulation" show="inline separated"></category>
 </action-categories>

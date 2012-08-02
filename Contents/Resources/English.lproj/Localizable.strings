@@ -17,6 +17,10 @@
 "com.onecrayon.sugar.handy.selections.edit.title" = "Edit Selections";
 "com.onecrayon.sugar.handy.selections.append.title" = "Append To Selections";
 
+"com.onecrayon.sugar.handy.selected-lines.prepend.title" = "Prepend To Selected Lines";
+"com.onecrayon.sugar.handy.selected-lines.wrap.title" = "Wrap Selected Lines";
+"com.onecrayon.sugar.handy.selected-lines.append.title" = "Append To Selected Lines";
+
 "com.onecrayon.sugar.handy.selections.combine.title" = "Combine Selected Ranges";
 "com.onecrayon.sugar.handy.selections.combine-bookended.title" = "Select Text Between Selected Ranges";
 
