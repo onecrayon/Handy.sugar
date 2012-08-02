@@ -103,6 +103,32 @@
 		</setup>
 	</action>
 	
+	<!-- Selected line(s) modification actions -->
+	
+	<action id="com.onecrayon.sugar.handy.selected-lines.prepend" category="handy.root/handy.selections/4">
+		<script>modify-lines.js</script>
+		<key-equivalent>control {</key-equivalent>
+		<setup>
+			<target>start</target>
+		</setup>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.selected-lines.wrap" category="handy.root/handy.selections/5">
+		<script>modify-lines.js</script>
+		<key-equivalent>control |</key-equivalent>
+		<setup>
+			<target>both</target>
+		</setup>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.selected-lines.append" category="handy.root/handy.selections/6">
+		<script>modify-lines.js</script>
+		<key-equivalent>control }</key-equivalent>
+		<setup>
+			<target>end</target>
+		</setup>
+	</action>
+	
 	<!-- Selection manipulation -->
 	
 	<action id="com.onecrayon.sugar.handy.selections.combine" category="handy.root/handy.selection-manipulation/1">
