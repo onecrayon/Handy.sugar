@@ -3,9 +3,6 @@
  * 
  * setup:
  * - amount: integer (ex: 1, -1, 10, -10)
- *
- * TODO:
- * - Add capability to +/- octal, hex, or binary numbers? Or stick to ints and pre-decimal place floats?
  */
 
 // Action logic
@@ -14,7 +11,7 @@ action.canPerformWithContext = function(context, outError) {
 	var range = context.selectedRanges[0];
 	if (range.length > 0) {
 		// If there is a digit anywhere in the first selection, return true
-		return /(^|\s)-?\d/.test(context.substringWithRange(range));
+		return /-?\d/.test(context.substringWithRange(range));
 	} else {
 		var digit = /\d/;
 		// If there is a character after the range and it is a digit, return true
@@ -40,13 +37,13 @@ action.performWithContext = function(context, outError) {
 		if (range.length) {
 			// We have a selection, so bump numeric zones within it
 			text = context.substringWithRange(range);
-			replacement = text.replace(/(^|\s)-?\d+/g, bumpInt);
+			replacement = text.replace(/-?\d+(?:\.?[\deE]*)?/g, bumpIntForNumber);
 		} else {
 			// Grab the number around the cursor and its range
 			target = getNumberAndRange(context, range);
 			text = target.number;
 			range = target.range;
-			replacement = bumpInt(text);
+			replacement = bumpIntForNumber(text);
 		}
 		// Replace if necessary!
 		if (replacement !== text) {
@@ -61,15 +58,13 @@ action.performWithContext = function(context, outError) {
 var amount = (typeof action.setup.amount !== 'undefined' ? parseInt(action.setup.amount, 10) : 0);
 
 // Shared utility variables and functions
-var bumpInt = function(intStr) {
-	var firstChar = '';
-	if (/^\s$/.test(intStr.charAt(0))) {
-		// First character is not part of the regex, so snag it
-		firstChar = intStr.charAt(0);
-		intStr = intStr.substr(1);
-	}
-	var value = parseInt(intStr, 10) + amount;
-	return firstChar + value;
+var bumpIntForNumber = function(numberStr) {
+	// Trim excess characters, since we only want the int
+	var match = /^([^\d-]*)(-?\d+)(.*?)$/.exec(numberStr),
+		prefix = (match !== null ? match[1] : ''),
+		number = (match !== null ? match[2] : numberStr),
+		suffix = (match !== null ? match[3] : '');
+	return prefix + (parseInt(number, 10) + amount) + suffix;
 };
 
 var getNumberAndRange = function(context, range) {
@@ -129,7 +124,7 @@ var getNumberAndRange = function(context, range) {
 	// Since index is left-aligned and we've overcompensated, need to increase +1
 	firstIndex = index + 1;
 	
-	// Trim excess characters, since we only want the int
+	// Trim excess characters, since we only want the number
 	var length = number.length;
 	// First trim the beginning
 	number = number.replace(/^[^\d-]*(-?\d+.*?)$/, '$1');
@@ -137,13 +132,7 @@ var getNumberAndRange = function(context, range) {
 		// Lengths differ, so update firstIndex
 		firstIndex = firstIndex + (length - number.length);
 	}
-	// Second trim the end
-	length = number.length;
-	number = number.replace(/^(-?\d+).*?$/, '$1');
-	if (number.length !== length) {
-		// Lengths differ, so update lastIndex
-		lastIndex = lastIndex - (length - number.length);
-	}
+	// No need to trim the end because the bumpIntForNumber method does that automatically
 	
 	return {
 		"number": number,
