@@ -6,8 +6,8 @@
  */
 
 action.canPerformWithContext = function(context, outError) {
-	// Only allow things to proceed if they passed in an approved character
-	return action.setup.character === ']' || action.setup.character === '}' || action.setup.character === ')';
+	// Only allow things to proceed if they passed in an approved character and it is alone on the line
+	return (action.setup.character === ']' || action.setup.character === '}' || action.setup.character === ')') && /^\s*$/.test(context.substringWithRange(context.lineStorage.lineRangeForRange(context.selectedRanges[0])));
 };
 
 action.performWithContext = function(context, outError) {
