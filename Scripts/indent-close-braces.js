@@ -12,7 +12,7 @@ action.canPerformWithContext = function(context, outError) {
 
 action.performWithContext = function(context, outError) {
 	var range = context.selectedRanges[0],
-		lineStartIndex = context.lineStorage.lineStartIndexLessThanIndex(range.location),
+		lineStartIndex = (context.string.length > 0 ? context.lineStorage.lineStartIndexLessThanIndex(range.location) : 0),
 		startChar = '',
 		endChar = action.setup.character,
 		replaceRange = range,
