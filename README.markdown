@@ -1,32 +1,17 @@
 # Handy.sugar
 
-A handy collection of text actions for Espresso. Currently includes:
-
-* **Increment/Decrement** by 1 or 10: increase or decrease the numeric value under the cursor (or select multiple numeric values to change all of them at once!)
-* **Quick Switch Tag**: quickly rename the nearest wrapping HTML or XML tag, and then hit tab to jump straight back to what you were editing
-* **Duplicate CSS Rule**: when your cursor is inside of an existing CSS rule, use `command D` to duplicate it (much like you could in CSSEdit, but smarter)
-* **Prepend To Selections**, **Edit Selections**, and **Append To Selections**: modify multiple selections in a single document at once. To create multiple selections either hold down option and drag to create multiple selections in a column, or hold down command and drag to create multiple discontiguous selections anywhere
-* **Prepend To Selected Lines**, **Wrap Selected Lines**, and **Append To Selected Lines**: modify multiple lines in a selection at once. Inserted characters will be placed immediately adjacent to the line contents (so prepending will place the new characters after the leading whitespace but before the actual content of the line).
-* **Combine Selected Ranges**: select everything from the first selection to the last selection in the document
-* **Select Text Between Selected Ranges**: select everything between the first and last selection in the document
-* _Prevent duplicate semicolons_ (hidden): typing a semicolon at the end of a CSS property will not result in duplicate semicolons anymore if there is already one there (will instead move your cursor outside the property)
-* _Documentation comments_ (hidden): creating a linebreak inside of a documentation comment in PHP or JavaScript will automatically add a leading asterisk to the next line. Documentation comments are formatted like so:
-
-        /**
-         * My documentation comment
-         */
-  
-  Additionally, typing `/**` will automatically insert a documentation comment snippet.
-
-* _Auto-indent closing braces_ (hidden): typing a closing brace alone on a line will automatically adjust its indentation level to the same as its matching opening brace; this applies to `)`, `]`, and `}`
-* _Grid-based tabs_ (hidden): if your preferences are set to use spaces instead of tabs, hitting the tab key without a selection will insert the number of spaces to bring your cursor to the next tab grid line. So for instance, if you are using four spaces per tab and there are 6 characters before your cursor in the line, hitting `tab` will insert two spaces (to bring your cursor to the 8 character point). Any tab characters in the line's indentation will be automatically converted to spaces when you hit `tab` to make sure that the grid calculations are accurate.
-* (hidden): if you accidentally type a full closing tag in HTML or XML, the extra characters will be automatically removed. For instance, if you type `</div>` in an HTML document, you will end up with `</div>/div>` because of the automatic tag closing in Espresso. With Handy.sugar installed, the extra "/div>" will be automatically removed as soon as you type the `>` character
+A handy collection of text actions for [Espresso](http://macrabbit.com/espresso/), written in Javascript.
 
 ## Installation
 
 **Requires Espresso 2.0**
 
-The easiest way to install Handy.sugar currently is directly from GitHub:
+1. [Download Handy.sugar](https://github.com/onecrayon/Handy.sugar/zipball/master)
+2. Decompress the zip file (your browser might do this for you)
+3. Rename the downloaded folder `Handy.sugar` (by default it is named something like `onecrayon-Handy.sugar-0ce72c8`)
+4. Double click the Sugar to install it
+
+Optionally, you can clone it from GitHub for easier updating:
 
     cd ~/Library/Application\ Support/Espresso/Sugars
     git clone git://github.com/onecrayon/Handy.sugar.git
@@ -36,13 +21,51 @@ Relaunch Espresso, and a new Handy submenu will be available in your Actions men
     cd ~/Library/Application\ Support/Espresso/Sugars/Handy.sugar
     git pull
 
+## Available actions
+
+Handy.sugar currently includes the following actions:
+
+* **Increment/Decrement** by 1 or 10: increase or decrease the numeric value under the cursor, in the current selection, or across multiple selections
+* **Quick Switch Tag**: quickly rename the nearest wrapping HTML or XML tag, and then hit tab to jump straight back to what you were editing
+* **Duplicate CSS Rule**: when your cursor is inside of an existing CSS rule, use `command D` to duplicate it (much like you could in CSSEdit, but smarter)
+
+### Selection actions
+
+* **Select All Copies of Word/Text**: selects all instances of the word under the cursor. If you have a selection, all instances of that selection will be selected instead. When combined with "Edit Selections" this is a very handy way to modify a variable name across a single file, for instance.
+* **Select Column Up/Down**: when you have a selection that is contained within a single line, these two actions allow you to select text in a column vertically across nearby lines. The selection skips empty lines, lines that have nothing but whitespace (unless your selection is nothing but whitespace), and lines that do not extend far enough to contain the whole selection. _Please note_: this does not take soft wrapping into consideration, and selections may sometimes not be lined up vertically visually if you are using tabs for indentation (because tabs are rendered as multiple spaces, but only take up a single character and the action bases its selections on the actual column index, not the visually-adjusted column index).
+* **Prepend To Selections**, **Edit Selections**, and **Append To Selections**: modify multiple selections in a single document at once. To create multiple selections either hold down option and drag to create multiple selections in a column, or hold down command and drag to create multiple discontiguous selections anywhere
+* **Prepend To Selected Lines**, **Wrap Selected Lines**, and **Append To Selected Lines**: modify multiple lines in a selection at once. Inserted characters will be placed immediately adjacent to the line contents (so prepending will place the new characters after the leading whitespace but before the actual content of the line).
+* **Combine Selected Ranges**: select everything from the first selection to the last selection in the document
+* **Select Text Between Selected Ranges**: select everything between the first and last selection in the document
+
+### Hidden actions
+
+* _Prevent duplicate semicolons_: typing a semicolon at the end of a CSS property will not result in duplicate semicolons anymore if there is already one there (will instead move your cursor outside the property)
+* _Documentation comments_: creating a linebreak inside of a documentation comment in PHP or JavaScript will automatically add a leading asterisk to the next line. Documentation comments are formatted like so:
+
+        /**
+         * My documentation comment
+         */
+  
+  Additionally, typing `/**` will automatically insert a documentation comment snippet.
+
+* _Auto-indent closing braces_: typing a closing brace alone on a line will automatically adjust its indentation level to the same as its matching opening brace; this applies to `)`, `]`, and `}`
+* _Grid-based tabs_: if your preferences are set to use spaces instead of tabs, hitting the tab key without a selection will insert the number of spaces to bring your cursor to the next tab grid line. So for instance, if you are using four spaces per tab and there are 6 characters before your cursor in the line, hitting `tab` will insert two spaces (to bring your cursor to the 8 character point). Any tab characters in the line's indentation will be automatically converted to spaces when you hit `tab` to make sure that the grid calculations are accurate.
+* _Close tag mistakes_: if you accidentally type a full closing tag in HTML or XML, the extra characters will be automatically removed. For instance, if you type `</div>` in an HTML document, you will end up with `</div>/div>` because of the automatic tag closing in Espresso. With Handy.sugar installed, the extra "/div>" will be automatically removed as soon as you type the `>` character
+
 ## Development
 
 Handy.sugar is written entirely in XML and JavaScript using Espresso's [JavaScript API](http://wiki.macrabbit.com/index/JavaScriptActions/)! To discover how I'm doing things or tweak its behavior to fit your own needs, right click the Sugar in the Finder and choose Show Package Contents or fork this project and go to town.
 
-You can also [let me know](http://onecrayon.com/about/contact/) if you have any feedback, requests, or run across any problems.
+You can also [email me](http://onecrayon.com/about/contact/) if you have any feedback, requests, or run across any problems. Alternately, come chat with me and other [Sugar devs on Glassboard](https://app.glassboard.com/web/invitation/code/yvyic).
 
 ## Changelog
+
+**1.6**:
+
+* New Select All Copies action that selects all instances of the active word or selection in the document
+* New Select Column Up/Down actions for creating columnar selections via the keyboard
+* Reshuffled the Handy actions menu around to better organize the growing number of selection-oriented actions
 
 **1.5**:
 
@@ -75,7 +98,7 @@ You can also [let me know](http://onecrayon.com/about/contact/) if you have any 
 
 ## MIT License
 
-Copyright (c) 2011 Ian Beck
+Copyright (c) 2011-2012 Ian Beck
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
