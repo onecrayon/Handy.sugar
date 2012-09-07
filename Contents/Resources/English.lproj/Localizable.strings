@@ -1,4 +1,5 @@
 "handy.root.title" = "Handy";
+"handy.selections.title" = "Selections";
 
 "com.onecrayon.sugar.handy.html-header.title" = "HTML / XML:";
 "com.onecrayon.sugar.handy.switch-tag.title" = "Quick Switch Tag";
@@ -25,5 +26,8 @@
 "com.onecrayon.sugar.handy.selections.combine-bookended.title" = "Select Text Between Selected Ranges";
 "com.onecrayon.sugar.handy.selections.select-words.title" = "Select All Copies of Word";
 "com.onecrayon.sugar.handy.selections.select-words.title.selection" = "Select All Copies of Text";
+
+"com.onecrayon.sugar.handy.selections.extend-column.up.title" = "Select Column Up";
+"com.onecrayon.sugar.handy.selections.extend-column.down.title" = "Select Column Down";
 
 "com.onecrayon.sugar.handy.documentation-comments-newline.title" = "Documentation Comment Newline";

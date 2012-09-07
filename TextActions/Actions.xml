@@ -80,9 +80,32 @@
 		</setup>
 	</action>
 	
-	<!-- Multiple selection actions -->
+	<!-- Multiple selection manipulation -->
 	
-	<action id="com.onecrayon.sugar.handy.selections.prepend" category="handy.root/handy.selections/1">
+	<action id="com.onecrayon.sugar.handy.selections.select-words" category="handy.root/handy.selections/handy.selection-manipulation/1">
+		<script>select-identical.js</script>
+		<key-equivalent>control /</key-equivalent>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.selections.extend-column.up" category="handy.root/handy.selections/handy.selection-manipulation/2">
+		<script>select-column.js</script>
+		<key-equivalent>control option arrow-up</key-equivalent>
+		<setup>
+			<direction>up</direction>
+		</setup>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.selections.extend-column.down" category="handy.root/handy.selections/handy.selection-manipulation/3">
+		<script>select-column.js</script>
+		<key-equivalent>control option arrow-down</key-equivalent>
+		<setup>
+			<direction>down</direction>
+		</setup>
+	</action>
+	
+	<!-- Multiple selection editing -->
+	
+	<action id="com.onecrayon.sugar.handy.selections.prepend" category="handy.root/handy.selections/handy.selection-editing/1">
 		<script>modify-selections.js</script>
 		<key-equivalent>control [</key-equivalent>
 		<setup>
@@ -90,12 +113,12 @@
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selections.edit" category="handy.root/handy.selections/2">
+	<action id="com.onecrayon.sugar.handy.selections.edit" category="handy.root/handy.selections/handy.selection-editing/2">
 		<script>modify-selections.js</script>
 		<key-equivalent>control \</key-equivalent>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selections.append" category="handy.root/handy.selections/3">
+	<action id="com.onecrayon.sugar.handy.selections.append" category="handy.root/handy.selections/handy.selection-editing/3">
 		<script>modify-selections.js</script>
 		<key-equivalent>control ]</key-equivalent>
 		<setup>
@@ -103,9 +126,9 @@
 		</setup>
 	</action>
 	
-	<!-- Selected line(s) modification actions -->
+	<!-- Selected line(s) editing actions -->
 	
-	<action id="com.onecrayon.sugar.handy.selected-lines.prepend" category="handy.root/handy.selected-lines/1">
+	<action id="com.onecrayon.sugar.handy.selected-lines.prepend" category="handy.root/handy.selections/handy.selected-lines/1">
 		<script>modify-lines.js</script>
 		<key-equivalent>control {</key-equivalent>
 		<setup>
@@ -113,7 +136,7 @@
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selected-lines.wrap" category="handy.root/handy.selected-lines/2">
+	<action id="com.onecrayon.sugar.handy.selected-lines.wrap" category="handy.root/handy.selections/handy.selected-lines/2">
 		<script>modify-lines.js</script>
 		<key-equivalent>control |</key-equivalent>
 		<setup>
@@ -121,7 +144,7 @@
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selected-lines.append" category="handy.root/handy.selected-lines/3">
+	<action id="com.onecrayon.sugar.handy.selected-lines.append" category="handy.root/handy.selections/handy.selected-lines/3">
 		<script>modify-lines.js</script>
 		<key-equivalent>control }</key-equivalent>
 		<setup>
@@ -129,24 +152,19 @@
 		</setup>
 	</action>
 	
-	<!-- Selection manipulation -->
+	<!-- Multiple selection combination -->
 	
-	<action id="com.onecrayon.sugar.handy.selections.combine" category="handy.root/handy.selection-manipulation/1">
+	<action id="com.onecrayon.sugar.handy.selections.combine" category="handy.root/handy.selections/handy.selection-combination/1">
 		<script>merge-selections.js</script>
 		<key-equivalent>control =</key-equivalent>
 	</action>
 
-	<action id="com.onecrayon.sugar.handy.selections.combine-bookended" category="handy.root/handy.selection-manipulation/2">
+	<action id="com.onecrayon.sugar.handy.selections.combine-bookended" category="handy.root/handy.selections/handy.selection-combination/2">
 		<script>merge-selections.js</script>
 		<key-equivalent>control -</key-equivalent>
 		<setup>
 			<bookends>true</bookends>
 		</setup>
-	</action>
-	
-	<action id="com.onecrayon.sugar.handy.selections.select-words" category="handy.root/handy.selection-manipulation/3">
-		<script>select-identical.js</script>
-		<key-equivalent>control /</key-equivalent>
 	</action>
 	
 	<!-- Hidden actions -->

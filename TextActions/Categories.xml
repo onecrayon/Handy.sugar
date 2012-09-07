@@ -5,7 +5,9 @@
 	<category id="handy.numeric" show="inline separated"></category>
 	<category id="handy.html" show="inline separated"></category>
 	<category id="handy.css" show="inline separated"></category>
-	<category id="handy.selections" show="inline separated"></category>
-	<category id="handy.selected-lines" show="inline separated"></category>
+	<category id="handy.selections" show="submenu"></category>
 	<category id="handy.selection-manipulation" show="inline separated"></category>
+	<category id="handy.selection-editing" show="inline separated"></category>
+	<category id="handy.selected-lines" show="inline separated"></category>
+	<category id="handy.selection-combination" show="inline separated"></category>
 </action-categories>
