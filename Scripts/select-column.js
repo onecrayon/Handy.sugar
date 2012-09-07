@@ -6,6 +6,14 @@
  * 
  * setup:
  * - direction (string): 'up' or 'down'
+ * 
+ * FIXME: currently, this does not take into account the fact that tab
+ * characters visually consume extra space, so if you run it along lines
+ * that have different amounts of tab indentation, you get odd-looking
+ * results. Need to figure out a way to deal with this, but JS API does
+ * not currently have access to preference information about how many
+ * spaces a tab represents, so it's a bit of a quandary unless I convert
+ * it to Objective-C.
  */
 
 action.canPerformWithContext= function(context, outError) {
@@ -25,7 +33,6 @@ action.performWithContext= function(context, outError) {
 		targetLineRange, nextSelectionRange = null;
 	// Don't bother trying to process if our target selection spans more than one line
 	if (startRange.location + startRange.length > startLineRange.location + startLineRange.length) {
-		console.log('selection spans line');
 		return false;
 	}
 	// Parse through the lines to look for the first one that we can select
@@ -45,16 +52,13 @@ action.performWithContext= function(context, outError) {
 		// selectedRanges does not appear to support JS array methods push/unshift, so we have to copy it
 		var sels = [].concat(context.selectedRanges);
 		if (dir === 1) {
-			console.log('selecting down');
 			sels.push(nextSelectionRange);
 		} else {
-			console.log('selecting up');
 			sels.unshift(nextSelectionRange);
 		}
 		context.selectedRanges = sels;
 		return true;
 	} else {
-		console.log('no nextSelectionRange');
 		return false;
 	}
 };
