@@ -23,9 +23,7 @@
 
 "com.onecrayon.sugar.handy.selections.combine.title" = "Combine Selected Ranges";
 "com.onecrayon.sugar.handy.selections.combine-bookended.title" = "Select Text Between Selected Ranges";
+"com.onecrayon.sugar.handy.selections.select-words.title" = "Select All Copies of Word";
+"com.onecrayon.sugar.handy.selections.select-words.title.selection" = "Select All Copies of Text";
 
 "com.onecrayon.sugar.handy.documentation-comments-newline.title" = "Documentation Comment Newline";
-
-"com.onecrayon.handy.auto-indent-close-brace.square.title" = "Typing";
-"com.onecrayon.handy.auto-indent-close-brace.curly.title" = "Typing";
-"com.onecrayon.handy.auto-indent-close-brace.round.title" = "Typing";

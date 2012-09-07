@@ -105,6 +105,7 @@ action.performWithContext = function(context, outError) {
 	
 	// Perform our insertion!
 	recipe.replaceRange(replaceRange, replaceString);
+	recipe.undoActionName = "Typing";
 	return context.applyTextRecipe(recipe);
 };
 
