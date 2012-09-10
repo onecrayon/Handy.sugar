@@ -39,7 +39,7 @@ action.performWithContext= function(context, outError) {
 	while (targetLineNumber > 0 && targetLineNumber <= context.lineStorage.numberOfLines) {
 		targetLineRange = context.lineStorage.lineRangeForLineNumber(targetLineNumber);
 		// Skip ahead if the line is nothing but whitespace (unless our original selection was nothing but whitespace) or if it isn't long enough
-		if ((!selectWhitespace && whitespaceRE.test(context.substringWithRange(targetLineRange))) || targetLineRange.location + targetLineRange.length < startLineOffset + startRange.length) {
+		if ((!selectWhitespace && whitespaceRE.test(context.substringWithRange(targetLineRange))) || targetLineRange.location + targetLineRange.length < startLineOffset + startRange.length || (!selectWhitespace && whitespaceRE.test(context.substringWithRange(new Range(targetLineRange.location + startLineOffset, startRange.length))))) {
 			targetLineNumber += dir;
 			continue;
 		} else {
