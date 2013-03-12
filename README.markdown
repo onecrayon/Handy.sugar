@@ -1,15 +1,14 @@
 # Handy.sugar
 
-A handy collection of text actions for [Espresso](http://macrabbit.com/espresso/), written in Javascript.
+A collection of text actions for [Espresso](http://macrabbit.com/espresso/) that keep your hands on the keyboard, written in Javascript.
 
 ## Installation
 
-**Requires Espresso 2.0**
+**Requires Espresso 2.1**
 
-1. [Download Handy.sugar](https://github.com/onecrayon/Handy.sugar/zipball/master)
+1. [Download Handy.sugar](http://onecrayon.com/downloads/Handy.sugar.zip)
 2. Decompress the zip file (your browser might do this for you)
-3. Rename the downloaded folder `Handy.sugar` (by default it is named something like `onecrayon-Handy.sugar-0ce72c8`)
-4. Double click the Sugar to install it
+3. Double click the Sugar to install it
 
 Optionally, you can clone it from GitHub for easier updating:
 
@@ -32,7 +31,7 @@ Handy.sugar currently includes the following actions:
 ### Selection actions
 
 * **Select All Copies of Word/Text**: selects all instances of the word under the cursor. If you have a selection, all instances of that selection will be selected instead. When combined with "Edit Selections" this is a very handy way to modify a variable name across a single file, for instance.
-* **Select Column Up/Down**: when you have a selection that is contained within a single line, these two actions allow you to select text in a column vertically across nearby lines. The selection skips empty lines, lines that have nothing but whitespace (unless your selection is nothing but whitespace), and lines that do not extend far enough to contain the whole selection. _Please note_: this does not take soft wrapping into consideration, and selections may sometimes not be lined up vertically visually if you are using tabs for indentation (because tabs are rendered as multiple spaces, but only take up a single character and the action bases its selections on the actual column index, not the visually-adjusted column index).
+* **Select Column Up/Down**: when you have a selection that is contained within a single line, these two actions allow you to select text in a column vertically across nearby lines. The selection skips empty lines, lines that have nothing but whitespace (unless your selection is nothing but whitespace), and lines that do not extend far enough to contain the whole selection. _Please note_: a soft-wrapped line is still counted as a single line.
 * **Prepend To Selections**, **Edit Selections**, and **Append To Selections**: modify multiple selections in a single document at once. To create multiple selections either hold down option and drag to create multiple selections in a column, or hold down command and drag to create multiple discontiguous selections anywhere
 * **Prepend To Selected Lines**, **Wrap Selected Lines**, and **Append To Selected Lines**: modify multiple lines in a selection at once. Inserted characters will be placed immediately adjacent to the line contents (so prepending will place the new characters after the leading whitespace but before the actual content of the line).
 * **Combine Selected Ranges**: select everything from the first selection to the last selection in the document
@@ -49,6 +48,7 @@ Handy.sugar currently includes the following actions:
   
   Additionally, typing `/**` will automatically insert a documentation comment snippet.
 
+* _Auto-indent within braces_: hitting enter next to an opening brace character (`(`, `[`, or `{`), will increase the level of indentation on the next line. For balanced braces, it will also move the closing brace to its own line.
 * _Auto-indent closing braces_: typing a closing brace alone on a line will automatically adjust its indentation level to the same as its matching opening brace; this applies to `)`, `]`, and `}`
 * _Grid-based tabs_: if your preferences are set to use spaces instead of tabs, hitting the tab key without a selection will insert the number of spaces to bring your cursor to the next tab grid line. So for instance, if you are using four spaces per tab and there are 6 characters before your cursor in the line, hitting `tab` will insert two spaces (to bring your cursor to the 8 character point). Any tab characters in the line's indentation will be automatically converted to spaces when you hit `tab` to make sure that the grid calculations are accurate.
 * _Close tag mistakes_: if you accidentally type a full closing tag in HTML or XML, the extra characters will be automatically removed. For instance, if you type `</div>` in an HTML document, you will end up with `</div>/div>` because of the automatic tag closing in Espresso. With Handy.sugar installed, the extra "/div>" will be automatically removed as soon as you type the `>` character
@@ -60,6 +60,12 @@ Handy.sugar is written entirely in XML and JavaScript using Espresso's [JavaScri
 You can also [email me](http://onecrayon.com/about/contact/) if you have any feedback, requests, or run across any problems. Alternately, come chat with me and other [Sugar devs on Glassboard](https://app.glassboard.com/web/invitation/code/yvyic).
 
 ## Changelog
+
+**1.7**:
+
+* **Requires Espresso 2.1**
+* New hidden action: auto-indent new line when hitting enter after a brace (or within balanced braces, if you are using [Autopair.sugar](https://github.com/onecrayon/Autopair-sugar))
+* Select Column Up/Down now selects text based on visual columns instead of character counts (auto-corrects for mixed tabs and spaces)
 
 **1.6**:
 
@@ -98,7 +104,7 @@ You can also [email me](http://onecrayon.com/about/contact/) if you have any fee
 
 ## MIT License
 
-Copyright (c) 2011-2012 Ian Beck
+Copyright (c) 2011-2013 Ian Beck
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
