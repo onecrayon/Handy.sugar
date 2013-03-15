@@ -208,14 +208,16 @@
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.handy.grid-based-tabs" category="hidden">
+	<!-- TODO: figure out how to handle this now that it interferes with tab stops; push for integration to core? -->
+	<!--<action id="com.onecrayon.handy.grid-based-tabs" category="hidden">
 		<script>grid-based-tabs.js</script>
 		<text-trigger key-equivalent="tab"></text-trigger>
-	</action>
+	</action>-->
 	
 	<action id="com.onecrayon.handy.auto-indent-braces" category="hidden">
 		<script>auto-indent-braces.js</script>
 		<text-trigger key-equivalent="enter"></text-trigger>
+		<syntax-context>:not(comment.block.documentation)</syntax-context>
 	</action>
 		
 </action-recipes>
