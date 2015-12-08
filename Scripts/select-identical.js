@@ -1,10 +1,13 @@
 /**
  * select-identical.js
  * 
- * Selects all identical words or selected phrases in the current document
+ * Selects all identical words or selected phrases in the current document or line
+ * 
+ * setup:
+ * - constraint (string): line
  */
 
-action.canPerformWithContext= function(context, outError) {
+action.canPerformWithContext = function(context, outError) {
 	var range = context.selectedRanges[0];
 	if (range.length > 0) {
 		return true;
@@ -14,11 +17,11 @@ action.canPerformWithContext= function(context, outError) {
 	return re_wordChar.test(prevChar) || re_wordChar.test(nextChar);
 };
 
-action.titleWithContext= function(context, outError) {
+action.titleWithContext = function(context, outError) {
 	return (context.selectedRanges[0].length > 0 ? "@selection" : null);
 };
 
-action.performWithContext= function(context, outError) {
+action.performWithContext = function(context, outError) {
 	var range = context.selectedRanges[0],
 		text = '',
 		useWordBoundaries = true;
@@ -37,12 +40,21 @@ action.performWithContext= function(context, outError) {
 	// Escape for use in regex
 	text = text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 	var searchRE = (useWordBoundaries ? new RegExp('\\b' + text + '\\b', 'g') : new RegExp(text, 'g')),
-		ranges = [];
+		ranges = [],
+		startOffset = 0;
 	// Because Javascript doesn't return index information by default, we have to be a bit sneaky
 	function findWordRanges(match, offset) {
-		ranges.push(new Range(offset, searchLength));
+		ranges.push(new Range(startOffset + offset, searchLength));
 	}
-	context.string.replace(searchRE, findWordRanges);
+	// Check if we're searching a line or the whole document
+	if (action.setup.constraint && action.setup.constraint.toLowerCase() === 'line') {
+		// Gather our line offset (which we need to offset all our search results)
+		var lineRange = context.lineStorage.lineRangeForIndex(range.location);
+		startOffset = lineRange.location;
+		context.substringWithRange(lineRange).replace(searchRE, findWordRanges);
+	} else {
+		context.string.replace(searchRE, findWordRanges);
+	}
 	// Now that we have the ranges, select them!
 	if (ranges.length > 0) {
 		context.selectedRanges = ranges;

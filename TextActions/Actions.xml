@@ -82,12 +82,20 @@
 	
 	<!-- Multiple selection manipulation -->
 	
-	<action id="com.onecrayon.sugar.handy.selections.select-words" category="handy.root/handy.selections/handy.selection-manipulation/1">
+	<action id="com.onecrayon.sugar.handy.selections.select-all-words" category="handy.root/handy.selections/handy.word-selection/1">
 		<script>select-identical.js</script>
 		<key-equivalent>control /</key-equivalent>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selections.extend-column.up" category="handy.root/handy.selections/handy.selection-manipulation/2">
+	<action id="com.onecrayon.sugar.handy.selections.select-line-words" category="handy.root/handy.selections/handy.word-selection/2">
+		<script>select-identical.js</script>
+		<key-equivalent>control option /</key-equivalent>
+		<setup>
+			<constraint>line</constraint>
+		</setup>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.selections.extend-column.up" category="handy.root/handy.selections/handy.selection-manipulation/1">
 		<script>select-column.js</script>
 		<key-equivalent>control option arrow-up</key-equivalent>
 		<setup>
@@ -95,7 +103,7 @@
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selections.extend-column.down" category="handy.root/handy.selections/handy.selection-manipulation/3">
+	<action id="com.onecrayon.sugar.handy.selections.extend-column.down" category="handy.root/handy.selections/handy.selection-manipulation/2">
 		<script>select-column.js</script>
 		<key-equivalent>control option arrow-down</key-equivalent>
 		<setup>

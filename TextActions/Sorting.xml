@@ -5,6 +5,7 @@
 		<selector>handy.html</selector>
 		<selector>handy.numeric</selector>
 		<selector>handy.selections</selector>
+		<selector>handy.word-selection</selector>
 		<selector>handy.selection-manipulation</selector>
 		<selector>handy.selection-editing</selector>
 		<selector>handy.selected-lines</selector>
