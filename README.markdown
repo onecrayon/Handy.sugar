@@ -30,9 +30,9 @@ Handy.sugar currently includes the following actions:
 
 ### Selection actions
 
-* **Select All Copies of Word/Text**: selects all instances of the word under the cursor. If you have a selection, all instances of that selection will be selected instead. When combined with "Edit Selections" this is a very handy way to modify a variable name across a single file, for instance.
+* **Select All Copies of Word/Text**: selects all instances of the word under the cursor. If you have a selection, all instances of the selected text will be selected instead. When combined with "Edit Selections" this is a very quick way to modify a variable name or other repeating text across a single file or line.
 * **Select Column Up/Down**: when you have a selection that is contained within a single line, these two actions allow you to select text in a column vertically across nearby lines. The selection skips empty lines, lines that have nothing but whitespace (unless your selection is nothing but whitespace), and lines that do not extend far enough to contain the whole selection. _Please note_: a soft-wrapped line is still counted as a single line.
-* **Prepend To Selections**, **Edit Selections**, and **Append To Selections**: modify multiple selections in a single document at once. To create multiple selections either hold down option and drag to create multiple selections in a column, or hold down command and drag to create multiple discontiguous selections anywhere
+* **Prepend To Selections**, **Edit Selections**, and **Append To Selections**: modify multiple selections in a single document at once. To create multiple selections either hold down option and drag to create multiple selections in a column, hold down command and drag to create multiple discontiguous selections anywhere, or use the multiple selection actions above
 * **Prepend To Selected Lines**, **Wrap Selected Lines**, and **Append To Selected Lines**: modify multiple lines in a selection at once. Inserted characters will be placed immediately adjacent to the line contents (so prepending will place the new characters after the leading whitespace but before the actual content of the line).
 * **Combine Selected Ranges**: select everything from the first selection to the last selection in the document
 * **Select Text Between Selected Ranges**: select everything between the first and last selection in the document
@@ -55,9 +55,9 @@ Handy.sugar currently includes the following actions:
 
 ## Development
 
-Handy.sugar is written entirely in XML and JavaScript using Espresso's [JavaScript API](http://wiki.macrabbit.com/index/JavaScriptActions/)! To discover how I'm doing things or tweak its behavior to fit your own needs, right click the Sugar in the Finder and choose Show Package Contents or fork this project and go to town.
+Handy.sugar is written entirely in XML and JavaScript using Espresso's [JavaScript API](http://wiki.macrabbit.com/JavaScriptActions/)! To discover how I'm doing things or tweak its behavior to fit your own needs, right click the Sugar in the Finder and choose Show Package Contents or fork this project and go to town.
 
-You can also [email me](http://onecrayon.com/about/contact/) if you have any feedback, requests, or run across any problems. Alternately, come chat with me and other [Sugar devs on Glassboard](https://app.glassboard.com/web/invitation/code/yvyic).
+You can also [email me](http://onecrayon.com/about/contact/) if you have any feedback, requests, or run across any problems.
 
 ## Changelog
 
@@ -66,6 +66,7 @@ You can also [email me](http://onecrayon.com/about/contact/) if you have any fee
 * **Requires Espresso 2.1**
 * New hidden action: auto-indent new line when hitting enter after a brace (or within balanced braces, if you are using [Autopair.sugar](https://github.com/onecrayon/Autopair-sugar))
 * Select Column Up/Down now selects text based on visual columns instead of character counts (auto-corrects for mixed tabs and spaces)
+* Select All Copies can now act on the current line as well as the document
 
 **1.6**:
 
@@ -104,7 +105,7 @@ You can also [email me](http://onecrayon.com/about/contact/) if you have any fee
 
 ## MIT License
 
-Copyright (c) 2011-2013 Ian Beck
+Copyright (c) 2011-2015 Ian Beck
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

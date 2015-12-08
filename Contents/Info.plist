@@ -8,7 +8,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.onecrayon.sugar.handy</string>
 	<key>CFBundleVersion</key>
-	<string>1.7.1</string>
+	<string>1.7.2</string>
 	<!--No need to modify these values-->
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
