@@ -3,6 +3,7 @@
 	<!-- Handy categories -->
 	<category id="handy.root" show="sub"></category>
 	<category id="handy.numeric" show="inline separated"></category>
+	<category id="handy.formatting" show="inline separated"></category>
 	<category id="handy.html" show="inline separated"></category>
 	<category id="handy.css" show="inline separated"></category>
 	<category id="handy.selections" show="submenu"></category>

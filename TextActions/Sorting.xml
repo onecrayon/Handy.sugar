@@ -3,6 +3,7 @@
 	<sort-template>
 		<selector>handy.css</selector>
 		<selector>handy.html</selector>
+		<selector>handy.formatting</selector>
 		<selector>handy.numeric</selector>
 		<selector>handy.selections</selector>
 		<selector>handy.word-selection</selector>

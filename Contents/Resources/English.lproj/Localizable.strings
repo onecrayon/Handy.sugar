@@ -8,6 +8,9 @@
 "com.onecrayon.sugar.handy.css-header.title" = "CSS:";
 "com.onecrayon.sugar.handy.duplicate-selector.title" = "Duplicate CSS Rule";
 
+"com.onecrayon.sugar.handy.formatting-header.title" = "Formatting:";
+"com.onecrayon.sugar.handy.align-assignments.title" = "Align Assignments";
+
 "com.onecrayon.sugar.handy.numbers-header.title" = "Numbers:";
 "com.onecrayon.sugar.handy.increment-1.title" = "Increment +1";
 "com.onecrayon.sugar.handy.increment-10.title" = "Increment +10";

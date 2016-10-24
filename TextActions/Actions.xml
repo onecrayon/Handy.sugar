@@ -42,6 +42,17 @@
 		<key-equivalent>command d</key-equivalent>
 	</action>
 	
+	<!-- Formatting action -->
+	
+	<action id="com.onecrayon.sugar.handy.formatting-header" category="handy.root/handy.formatting/0">
+		<script>placeholder</script>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.align-assignments" category="handy.root/handy.formatting/1">
+		<script>align-assignments.js</script>
+		<key-equivalent>command option a</key-equivalent>
+	</action>
+	
 	<!-- Number handling actions -->
 
 	<action id="com.onecrayon.sugar.handy.numbers-header" category="handy.root/handy.numeric/0">
