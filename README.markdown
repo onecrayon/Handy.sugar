@@ -24,6 +24,17 @@ Relaunch Espresso, and a new Handy submenu will be available in your Actions men
 
 Handy.sugar currently includes the following actions:
 
+* **Align Assignments**: vertically aligns all assignment operators in the selected lines
+    
+        // So this:
+        foo = 'bar';
+        blag = 'blarg';
+        fibbles = 'McGee';
+        // Gets transformed into this:
+        foo     = 'bar';
+        blag    = 'blarg';
+        fibbles = 'McGee';
+
 * **Increment/Decrement** by 1 or 10: increase or decrease the numeric value under the cursor, in the current selection, or across multiple selections
 * **Quick Switch Tag**: quickly rename the nearest wrapping HTML or XML tag, and then hit tab to jump straight back to what you were editing
 * **Duplicate CSS Rule**: when your cursor is inside of an existing CSS rule, use `command D` to duplicate it (much like you could in CSSEdit, but smarter)
@@ -50,8 +61,8 @@ Handy.sugar currently includes the following actions:
 
 * _Auto-indent within braces_: hitting enter next to an opening brace character (`(`, `[`, or `{`), will increase the level of indentation on the next line. For balanced braces, it will also move the closing brace to its own line.
 * _Auto-indent closing braces_: typing a closing brace alone on a line will automatically adjust its indentation level to the same as its matching opening brace; this applies to `)`, `]`, and `}`
-* _Grid-based tabs_: if your preferences are set to use spaces instead of tabs, hitting the tab key without a selection will insert the number of spaces to bring your cursor to the next tab grid line. So for instance, if you are using four spaces per tab and there are 6 characters before your cursor in the line, hitting `tab` will insert two spaces (to bring your cursor to the 8 character point). Any tab characters in the line's indentation will be automatically converted to spaces when you hit `tab` to make sure that the grid calculations are accurate.
 * _Close tag mistakes_: if you accidentally type a full closing tag in HTML or XML, the extra characters will be automatically removed. For instance, if you type `</div>` in an HTML document, you will end up with `</div>/div>` because of the automatic tag closing in Espresso. With Handy.sugar installed, the extra "/div>" will be automatically removed as soon as you type the `>` character
+* _Grid-based tabs_ (currently disabled): if your preferences are set to use spaces instead of tabs, hitting the tab key without a selection will insert the number of spaces to bring your cursor to the next tab grid line. So for instance, if you are using four spaces per tab and there are 6 characters before your cursor in the line, hitting `tab` will insert two spaces (to bring your cursor to the 8 character point). Any tab characters in the line's indentation will be automatically converted to spaces when you hit `tab` to make sure that the grid calculations are accurate.
 
 ## Development
 
@@ -61,12 +72,17 @@ You can also [email me](http://onecrayon.com/about/contact/) if you have any fee
 
 ## Changelog
 
+**1.8**:
+
+* New Align Assignments action: add spaces to vertically align assignment operators across lines
+
 **1.7**:
 
 * **Requires Espresso 2.1**
 * New hidden action: auto-indent new line when hitting enter after a brace (or within balanced braces, if you are using [Autopair.sugar](https://github.com/onecrayon/Autopair-sugar))
 * Select Column Up/Down now selects text based on visual columns instead of character counts (auto-corrects for mixed tabs and spaces)
 * Select All Copies can now act on the current line as well as the document
+* Grid Based Tabs is currently disabled (as it interferes with native Espresso tab-stops in Espresso 2.1+)
 
 **1.6**:
 
@@ -105,7 +121,7 @@ You can also [email me](http://onecrayon.com/about/contact/) if you have any fee
 
 ## MIT License
 
-Copyright (c) 2011-2015 Ian Beck
+Copyright (c) 2011-2016 Ian Beck
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
