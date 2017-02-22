@@ -4,7 +4,7 @@ A collection of text actions for [Espresso](http://macrabbit.com/espresso/) that
 
 ## Installation
 
-**Requires Espresso 2.1**
+**Requires Espresso 3.0**; use [Handy v1.8.0](https://github.com/onecrayon/Handy.sugar/releases/tag/v1.8.0) for Espresso 2.
 
 1. [Download Handy.sugar](http://onecrayon.com/downloads/Handy.sugar.zip)
 2. Decompress the zip file (your browser might do this for you)
@@ -21,6 +21,8 @@ Relaunch Espresso, and a new Handy submenu will be available in your Actions men
     git pull
 
 ## Available actions
+
+**Breaking change:** selection editing actions are removed in Handy 2.0! Espresso 3 includes native multiple cursor and selections editing, making these actions redundant. Additionally, "edit selected lines" actions now use the old "edit selection" shortcuts and utilize multiple cursors instead of snippets to get the job done.
 
 Handy.sugar currently includes the following actions:
 
@@ -39,14 +41,13 @@ Handy.sugar currently includes the following actions:
 * **Quick Switch Tag**: quickly rename the nearest wrapping HTML or XML tag, and then hit tab to jump straight back to what you were editing
 * **Duplicate CSS Rule**: when your cursor is inside of an existing CSS rule, use `command D` to duplicate it (much like you could in CSSEdit, but smarter)
 
-### Selection actions
+### Selection and cursor actions
 
-* **Select All Copies of Word/Text**: selects all instances of the word under the cursor. If you have a selection, all instances of the selected text will be selected instead. When combined with "Edit Selections" this is a very quick way to modify a variable name or other repeating text across a single file or line.
+* **Select All Copies of Word/Text**: selects all instances of the word under the cursor. If you have a selection, all instances of the selected text will be selected instead.
 * **Select Column Up/Down**: when you have a selection that is contained within a single line, these two actions allow you to select text in a column vertically across nearby lines. The selection skips empty lines, lines that have nothing but whitespace (unless your selection is nothing but whitespace), and lines that do not extend far enough to contain the whole selection. _Please note_: a soft-wrapped line is still counted as a single line.
-* **Prepend To Selections**, **Edit Selections**, and **Append To Selections**: modify multiple selections in a single document at once. To create multiple selections either hold down option and drag to create multiple selections in a column, hold down command and drag to create multiple discontiguous selections anywhere, or use the multiple selection actions above
-* **Prepend To Selected Lines**, **Wrap Selected Lines**, and **Append To Selected Lines**: modify multiple lines in a selection at once. Inserted characters will be placed immediately adjacent to the line contents (so prepending will place the new characters after the leading whitespace but before the actual content of the line).
-* **Combine Selected Ranges**: select everything from the first selection to the last selection in the document
-* **Select Text Between Selected Ranges**: select everything between the first and last selection in the document
+* **Cursor To Line Start**, **Bookend Line With Cursors**, and **Cursor To Line End**: modify the cursors for all selected lines (this includes lines with a cursor/selection inside them as well as multiple lines within a larger selection, but excludes lines composed of nothing but whitespace). Cursors will hug line contents (so Cursor To Line Start will place the cursor after the leading whitespace but before the actual content of the line).
+* **Combine Selected Ranges**: inclusively select everything from the first selection to the last selection in the document
+* **Select Text Between Selected Ranges**: select everything between the first and last selection in the document (excludes the selections themselves)
 
 ### Hidden actions
 
@@ -71,6 +72,12 @@ Handy.sugar is written entirely in XML and JavaScript using Espresso's [JavaScri
 You can also [email me](http://onecrayon.com/about/contact/) if you have any feedback, requests, or run across any problems.
 
 ## Changelog
+
+**2.0**:
+
+* **Requires Espresso 3.0**
+* **Breaking change:** selection editing actions have been removed in favor of Espresso 3's native multiple selection and cursor handling, and their shortcuts have been reassigned to cursor placement actions
+* New cursor/selection actions: Cursor To Line Start/End, Bookend Line With Cursors.
 
 **1.8**:
 
@@ -121,7 +128,7 @@ You can also [email me](http://onecrayon.com/about/contact/) if you have any fee
 
 ## MIT License
 
-Copyright (c) 2011-2016 Ian Beck
+Copyright (c) 2011-2017 Ian Beck
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
