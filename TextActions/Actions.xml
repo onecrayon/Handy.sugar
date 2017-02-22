@@ -122,52 +122,29 @@
 		</setup>
 	</action>
 	
-	<!-- Multiple selection editing -->
-	
-	<action id="com.onecrayon.sugar.handy.selections.prepend" category="handy.root/handy.selections/handy.selection-editing/1">
-		<script>modify-selections.js</script>
-		<key-equivalent>control [</key-equivalent>
-		<setup>
-			<method>prepend</method>
-		</setup>
-	</action>
-	
-	<action id="com.onecrayon.sugar.handy.selections.edit" category="handy.root/handy.selections/handy.selection-editing/2">
-		<script>modify-selections.js</script>
-		<key-equivalent>control \</key-equivalent>
-	</action>
-	
-	<action id="com.onecrayon.sugar.handy.selections.append" category="handy.root/handy.selections/handy.selection-editing/3">
-		<script>modify-selections.js</script>
-		<key-equivalent>control ]</key-equivalent>
-		<setup>
-			<method>append</method>
-		</setup>
-	</action>
-	
 	<!-- Selected line(s) editing actions -->
 	
 	<action id="com.onecrayon.sugar.handy.selected-lines.prepend" category="handy.root/handy.selections/handy.selected-lines/1">
 		<script>modify-lines.js</script>
-		<key-equivalent>control {</key-equivalent>
+		<key-equivalent>control [</key-equivalent>
 		<setup>
 			<target>start</target>
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selected-lines.wrap" category="handy.root/handy.selections/handy.selected-lines/2">
+	<action id="com.onecrayon.sugar.handy.selected-lines.append" category="handy.root/handy.selections/handy.selected-lines/2">
 		<script>modify-lines.js</script>
-		<key-equivalent>control |</key-equivalent>
+		<key-equivalent>control ]</key-equivalent>
 		<setup>
-			<target>both</target>
+			<target>end</target>
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.selected-lines.append" category="handy.root/handy.selections/handy.selected-lines/3">
+	<action id="com.onecrayon.sugar.handy.selected-lines.wrap" category="handy.root/handy.selections/handy.selected-lines/3">
 		<script>modify-lines.js</script>
-		<key-equivalent>control }</key-equivalent>
+		<key-equivalent>control \</key-equivalent>
 		<setup>
-			<target>end</target>
+			<target>both</target>
 		</setup>
 	</action>
 	

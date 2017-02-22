@@ -17,13 +17,12 @@
 "com.onecrayon.sugar.handy.decrement-1.title" = "Decrement -1";
 "com.onecrayon.sugar.handy.decrement-10.title" = "Decrement -10";
 
-"com.onecrayon.sugar.handy.selections.prepend.title" = "Prepend To Selections";
-"com.onecrayon.sugar.handy.selections.edit.title" = "Edit Selections";
-"com.onecrayon.sugar.handy.selections.append.title" = "Append To Selections";
-
-"com.onecrayon.sugar.handy.selected-lines.prepend.title" = "Prepend To Selected Lines";
-"com.onecrayon.sugar.handy.selected-lines.wrap.title" = "Wrap Selected Lines";
-"com.onecrayon.sugar.handy.selected-lines.append.title" = "Append To Selected Lines";
+"com.onecrayon.sugar.handy.selected-lines.prepend.title" = "Cursor To Line Start";
+"com.onecrayon.sugar.handy.selected-lines.prepend.title.multiple" = "Cursors To Line Starts";
+"com.onecrayon.sugar.handy.selected-lines.wrap.title" = "Bookend Line With Cursors";
+"com.onecrayon.sugar.handy.selected-lines.wrap.title.multiple" = "Bookend Lines With Cursors";
+"com.onecrayon.sugar.handy.selected-lines.append.title" = "Cursor To Line End";
+"com.onecrayon.sugar.handy.selected-lines.append.title.multiple" = "Cursors To Line Ends";
 
 "com.onecrayon.sugar.handy.selections.combine.title" = "Combine Selected Ranges";
 "com.onecrayon.sugar.handy.selections.combine-bookended.title" = "Select Text Between Selected Ranges";
