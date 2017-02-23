@@ -2,6 +2,13 @@
 
 A collection of text actions for [Espresso](http://macrabbit.com/espresso/) that keep your hands on the keyboard, written in Javascript.
 
+## Breaking changes in Handy 2.0
+
+* **Requires Espresso 3.0**
+* **Selection editing actions are gone.** Espresso 3 has native support for editing multiple cursors or selections, making these actions redundant.
+* **"Edit selected lines" actions now use the old "edit selection" shortcuts**; they also utilize multiple cursors instead of snippets.
+* **Select All Copies shortcut now moves upward through the Item hierarchy with each successive use**; a new shortcut is available for selecting all copies of a word in the document.
+
 ## Installation
 
 **Requires Espresso 3.0**; use [Handy v1.8.0](https://github.com/onecrayon/Handy.sugar/releases/tag/v1.8.0) for Espresso 2.
@@ -22,8 +29,6 @@ Relaunch Espresso, and a new Handy submenu will be available in your Actions men
 
 ## Available actions
 
-**Breaking change:** selection editing actions are removed in Handy 2.0! Espresso 3 includes native multiple cursor and selections editing, making these actions redundant. Additionally, "edit selected lines" actions now use the old "edit selection" shortcuts and utilize multiple cursors instead of snippets to get the job done.
-
 Handy.sugar currently includes the following actions:
 
 * **Align Assignments**: vertically aligns all assignment operators in the selected lines
@@ -39,13 +44,12 @@ Handy.sugar currently includes the following actions:
 
 * **Increment/Decrement** by 1 or 10: increase or decrease the numeric value under the cursor, in the current selection, or across multiple selections
 * **Quick Switch Tag**: quickly rename the nearest wrapping HTML or XML tag, and then hit tab to jump straight back to what you were editing
-* **Duplicate CSS Rule**: when your cursor is inside of an existing CSS rule, use `command D` to duplicate it (much like you could in CSSEdit, but smarter)
 
 ### Selection and cursor actions
 
-* **Select All Copies of Word/Text**: selects all instances of the word under the cursor. If you have a selection, all instances of the selected text will be selected instead.
+* **Select Nearby Copies of Word/Text** and **Select All Copies of Word/Text**: selects all instances of the word under the cursor. If you have a selection, all instances of the selected text will be selected instead. When selecting "nearby", selections will be constrained to the nearest parent Item block (this is what is shown in the Navigator). Invoking the "nearby" action multiple times will expand the context upward through the hierarchy; for instance, this allows you to easily select all instances of a variable within a particular function or class.
 * **Select Column Up/Down**: when you have a selection that is contained within a single line, these two actions allow you to select text in a column vertically across nearby lines. The selection skips empty lines, lines that have nothing but whitespace (unless your selection is nothing but whitespace), and lines that do not extend far enough to contain the whole selection. _Please note_: a soft-wrapped line is still counted as a single line.
-* **Cursor To Line Start**, **Bookend Line With Cursors**, and **Cursor To Line End**: modify the cursors for all selected lines (this includes lines with a cursor/selection inside them as well as multiple lines within a larger selection, but excludes lines composed of nothing but whitespace). Cursors will hug line contents (so Cursor To Line Start will place the cursor after the leading whitespace but before the actual content of the line).
+* **Cursor To Line Start/End** and **Bookend Line With Cursors**: modify the cursors for all selected lines (this includes lines with a cursor/selection inside them as well as multiple lines within a larger selection, but excludes lines composed of nothing but whitespace). Cursors will hug line contents (so Cursor To Line Start will place the cursor after the leading whitespace but before the actual content of the line).
 * **Combine Selected Ranges**: inclusively select everything from the first selection to the last selection in the document
 * **Select Text Between Selected Ranges**: select everything between the first and last selection in the document (excludes the selections themselves)
 
@@ -77,7 +81,11 @@ You can also [email me](http://onecrayon.com/about/contact/) if you have any fee
 
 * **Requires Espresso 3.0**
 * **Breaking change:** selection editing actions have been removed in favor of Espresso 3's native multiple selection and cursor handling, and their shortcuts have been reassigned to cursor placement actions
+* **Breaking change:** Select All Copies now restricts selections to the nearest Item block and invoking the action multiple times will expand the search context upward through the document.
 * New cursor/selection actions: Cursor To Line Start/End, Bookend Line With Cursors.
+* New Select Nearby Copies of Word action that restricts selections to the nearest Item block
+* Select All Copies now has a new keyboard shortcut
+* CSS Duplicate command has been removed in favor of native Espresso 3 behavior
 
 **1.8**:
 
