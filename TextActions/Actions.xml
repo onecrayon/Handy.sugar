@@ -31,17 +31,6 @@
 		</setup>
 	</action>
 	
-	<action id="com.onecrayon.sugar.handy.css-header" category="handy.root/handy.css/0">
-		<script>placeholder</script>
-		<language-context>css</language-context>
-	</action>
-	
-	<action id="com.onecrayon.sugar.handy.duplicate-selector" category="handy.root/handy.css/1">
-		<script>duplicate-selector.js</script>
-		<language-context>css</language-context>
-		<key-equivalent>command d</key-equivalent>
-	</action>
-	
 	<!-- Formatting action -->
 	
 	<action id="com.onecrayon.sugar.handy.formatting-header" category="handy.root/handy.formatting/0">
