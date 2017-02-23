@@ -8,27 +8,66 @@
  * - direction (string): 'up' or 'down'
  */
 
-action.canPerformWithContext = function(context, outError) {
-	return action.setup.direction && context.selectedRanges[0].length > 0;
-};
-
 action.performWithContext = function(context, outError) {
 	// Determine which direction we are going and setup initial variables
 	var dir = (action.setup.direction.toLowerCase() === 'up' ? -1 : 1),
-		whitespaceRE = /^\s+$/,
 		startRange = (dir === 1 ? context.selectedRanges[context.selectedRanges.length - 1] : context.selectedRanges[0]),
-		selectWhitespace = whitespaceRE.test(context.substringWithRange(startRange)),
 		startLineNumber = context.lineStorage.lineNumberForIndex(startRange.location),
 		startLineRange = context.lineStorage.lineRangeForLineNumber(startLineNumber);
-	// Don't bother trying to process if our target selection spans more than one line
+	// Don't bother trying to process if our anchor selection spans more than one line
 	if (startRange.location + startRange.length > startLineRange.location + startLineRange.length) {
 		return false;
 	}
 	
-	// Figure out our offsets, adjusted for tab characters
+	/**
+	 * We need to determine whether to consider whitespace-only lines/selections
+	 * as valid targets. If we have a selection, we simply test the selection.
+	 * If we have a cursor, though, we need to test the characters to either side.
+	 * 
+	 * We also need to test the range on the opposite end of our range set
+	 * (otherwise successive uses of select-column may result in changing whitespace
+	 * values).
+	 * 
+	 * This can still result in bad behavior if the user moves in both directions,
+	 * but unless we test every single range there isn't any way around this.
+	 * 
+	 * FIXME: should we test every range? It would guarantee the right behavior, but
+	 * starting with whitespace and then moving in both directions while wanting to
+	 * still select whitespace seems like such an edge scenario that I'm not sure it's
+	 * worth the extra processing.
+	 */
+	var testRange = startRange;
+	if (context.selectedRanges.length > 1) {
+		testRange = (dir === 1 ? context.selectedRanges[0] : context.selectedRanges[context.selectedRanges.length - 1]);
+	}
+	var whitespaceTestLocation = testRange.location,
+		whitespaceTestLength = testRange.length;
+	if (!whitespaceTestLength) {
+		if (whitespaceTestLocation > 0) {
+			whitespaceTestLocation -= 1;
+			whitespaceTestLength += 1;
+		}
+		if (whitespaceTestLocation + whitespaceTestLength + 1 < context.string.length) {
+			whitespaceTestLength += 1;
+		}
+	}
+	// Check if we should skip whitespace or not
+	var whitespaceRE = /^\s*$/,
+		whitespaceTestRange = new Range(whitespaceTestLocation, whitespaceTestLength),
+		skipWhitespace = !whitespaceRE.test(context.substringWithRange(whitespaceTestRange));
+	
+	/**
+	 * True vertical movement is complicated by the fact that tabs take up a variable
+	 * amount of horizontal space if they are mixed with spaces or other characters.
+	 * 
+	 * To compensate for this, we need to parse through our current line and determine
+	 * what the adjusted character offset is for our selection. The end goal is to
+	 * figure out the adjusted start and end indices (relative to the line).
+	 */
 	var spacesPerTab = context.textPreferences.numberOfSpacesForTab,
 		startLineParts = context.substringWithRange(startLineRange).split('\t'),
-		startLineStart = null, startLineEnd = null, curString = '', curAdjustedIndex = 0, curSegment = '';
+		startLineStart = null, startLineEnd = null,
+		curString = '', curAdjustedIndex = 0, curSegment = '';
 	for (var i = 0, count = startLineParts.length; i < count; i++) {
 		if (i > 0) {
 			curString += '\t';
@@ -69,8 +108,22 @@ action.performWithContext = function(context, outError) {
 		targetLineRange = context.lineStorage.lineRangeForLineNumber(targetLineNumber);
 		targetLineParts = context.substringWithRange(targetLineRange).split('\t');
 		targetLineConverted = targetLineParts.join(new Array(spacesPerTab + 1).join(' '));
+		
+		// Similar to before, we need to test adjacent characters if we have a cursor
+		var adjustedStartLocation = startLineStart,
+			adjustedEndLocation = startLineEnd;
+		if (startLineStart === startLineEnd) {
+			if (adjustedStartLocation > 0) {
+				adjustedStartLocation -= 1;
+			}
+			if (adjustedEndLocation + 1 < targetLineConverted.length) {
+				adjustedEndLocation += 1;
+			}
+		}
 		// Skip ahead if the line is nothing but whitespace (unless our original selection was nothing but whitespace) or if it isn't long enough
-		if ((!selectWhitespace && whitespaceRE.test(targetLineConverted)) || targetLineConverted.length < startLineEnd || (!selectWhitespace && whitespaceRE.test(targetLineConverted.substring(startLineStart, startLineEnd)))) {
+		if ((skipWhitespace && whitespaceRE.test(targetLineConverted))
+			|| targetLineConverted.length < startLineEnd
+			|| (skipWhitespace && whitespaceRE.test(targetLineConverted.substring(adjustedStartLocation, adjustedEndLocation)))) {
 			targetLineNumber += dir;
 			continue;
 		} else {
@@ -95,9 +148,9 @@ action.performWithContext = function(context, outError) {
 					}
 				}
 				if (targetEnd === null) {
-					if (curAdjustedIndex >= startLineEnd) {
-						// End index falls in the middle of a tab; wrap the tab
-						targetEnd = curString.length - targetStart;
+					if (startLineEnd <= curAdjustedIndex) {
+						// End index falls in a tab; bump to the end of the tab character
+						targetEnd = curString.length;
 					} else if (startLineEnd <= curAdjustedIndex + curSegment.length) {
 						// End index falls somewhere in our current segment
 						targetEnd = curString.length + (startLineEnd - curAdjustedIndex);
@@ -107,6 +160,10 @@ action.performWithContext = function(context, outError) {
 					curString += curSegment;
 					curAdjustedIndex += curSegment.length;
 				} else {
+					// Ensure that we maintain our selection length
+					if (targetStart === targetEnd) {
+						targetEnd += startLineEnd - startLineStart;
+					}
 					break;
 				}
 			}
