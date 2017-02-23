@@ -91,11 +91,19 @@
 		</setup>
 	</action>
 	
-	<!-- Multiple selection manipulation -->
+	<!-- Select word actions -->
 	
-	<action id="com.onecrayon.sugar.handy.selections.select-all-words" category="handy.root/handy.selections/handy.word-selection/1">
+	<action id="com.onecrayon.sugar.handy.selections.select-block-words" category="handy.root/handy.selections/handy.word-selection/1">
 		<script>select-identical.js</script>
 		<key-equivalent>control /</key-equivalent>
+	</action>
+	
+	<action id="com.onecrayon.sugar.handy.selections.select-all-words" category="handy.root/handy.selections/handy.word-selection/2">
+		<script>select-identical.js</script>
+		<key-equivalent>control shift /</key-equivalent>
+		<setup>
+			<constraint>all</constraint>
+		</setup>
 	</action>
 	
 	<action id="com.onecrayon.sugar.handy.selections.select-line-words" category="handy.root/handy.selections/handy.word-selection/2">
@@ -105,6 +113,8 @@
 			<constraint>line</constraint>
 		</setup>
 	</action>
+	
+	<!-- Multiple selection manipulation -->
 	
 	<action id="com.onecrayon.sugar.handy.selections.extend-column.up" category="handy.root/handy.selections/handy.selection-manipulation/1">
 		<script>select-column.js</script>

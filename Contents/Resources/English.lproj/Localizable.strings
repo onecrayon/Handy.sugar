@@ -26,6 +26,8 @@
 
 "com.onecrayon.sugar.handy.selections.combine.title" = "Combine Selected Ranges";
 "com.onecrayon.sugar.handy.selections.combine-bookended.title" = "Select Text Between Selected Ranges";
+"com.onecrayon.sugar.handy.selections.select-block-words.title" = "Select Nearby Copies of Word";
+"com.onecrayon.sugar.handy.selections.select-block-words.title.selection" = "Select Nearby Copies of Text";
 "com.onecrayon.sugar.handy.selections.select-all-words.title" = "Select All Copies of Word";
 "com.onecrayon.sugar.handy.selections.select-all-words.title.selection" = "Select All Copies of Text";
 "com.onecrayon.sugar.handy.selections.select-line-words.title" = "Select All Copies of Word in Line";

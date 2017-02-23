@@ -1,10 +1,10 @@
 /**
  * select-identical.js
  * 
- * Selects all identical words or selected phrases in the current document or line
+ * Selects all identical words or selected phrases in the current item, line, or document
  * 
  * setup:
- * - constraint (string): line
+ * - constraint (string): 'item' (default), 'line', or 'all'
  */
 
 action.canPerformWithContext = function(context, outError) {
@@ -24,7 +24,8 @@ action.titleWithContext = function(context, outError) {
 action.performWithContext = function(context, outError) {
 	var range = context.selectedRanges[0],
 		text = '',
-		useWordBoundaries = true;
+		useWordBoundaries = true,
+		constraint = (action.setup.constraint ? action.setup.constraint.toLowerCase() : 'item');
 	if (range.length > 0) {
 		// Select all instances of a particular selection
 		text = context.substringWithRange(range);
@@ -41,20 +42,62 @@ action.performWithContext = function(context, outError) {
 	text = text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 	var searchRE = (useWordBoundaries ? new RegExp('\\b' + text + '\\b', 'g') : new RegExp(text, 'g')),
 		ranges = [],
-		startOffset = 0;
+		startOffset = 0,
+		searchDocument = false;
 	// Because Javascript doesn't return index information by default, we have to be a bit sneaky
 	function findWordRanges(match, offset) {
 		ranges.push(new Range(startOffset + offset, searchLength));
 	}
 	// Check if we're searching a line or the whole document
-	if (action.setup.constraint && action.setup.constraint.toLowerCase() === 'line') {
+	if (constraint === 'all') {
+		searchDocument = true;
+	} else if (constraint === 'line') {
 		// Gather our line offset (which we need to offset all our search results)
 		var lineRange = context.lineStorage.lineRangeForIndex(range.location);
 		startOffset = lineRange.location;
 		context.substringWithRange(lineRange).replace(searchRE, findWordRanges);
 	} else {
+		var lastRange = (context.selectedRanges.length > 1 ? context.selectedRanges[context.selectedRanges.length - 1] : null),
+			testRange = (lastRange ? new Range(range.location, (lastRange.location + lastRange.length) - range.location) : range),
+			item = context.itemizer.smallestItemContainingCharacterRange(testRange);
+		if (item) {
+			startOffset = item.range.location;
+			context.substringWithRange(item.range).replace(searchRE, findWordRanges);
+			// If we didn't find any new items, move one item up
+			if (ranges.length === context.selectedRanges.length) {
+				// Check the full document if we don't have a parent item
+				if (!item.parentItem) {
+					searchDocument = true;
+				} else {
+					// Select the parent if the range is the same
+					var originalRange = item.range,
+						newRange = item.range;
+					while(item.parentItem && (newRange.location == item.range.location && newRange.length == item.range.length)) {
+						item = item.parentItem;
+						newRange = item.range;
+					}
+					// If we found an item further up, reparse for that item
+					if (originalRange.location !== newRange.location || originalRange.length !== newRange.length) {
+						ranges = [];
+						startOffset = newRange.location;
+						context.substringWithRange(newRange).replace(searchRE, findWordRanges);
+					} else {
+						searchDocument = true;
+					}
+				}
+			}
+		} else {
+			searchDocument = true;
+		}
+	}
+	
+	if (searchDocument) {
+		// Clear ranges, just in case we did a prior search
+		ranges = [];
+		startOffset = 0;
 		context.string.replace(searchRE, findWordRanges);
 	}
+	
 	// Now that we have the ranges, select them!
 	if (ranges.length > 0) {
 		context.selectedRanges = ranges;
